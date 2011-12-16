@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img scr>
+	<img scr="">
 </body>
 </html>
