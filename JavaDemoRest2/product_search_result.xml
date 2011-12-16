@@ -1,0 +1,336 @@
+<?xml version="1.0" ?>
+<product_search_result xmlns="http://xml.demandware.com/schemas/records/product_search_result/1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <count>2</count>
+  <hits>
+    <hit>
+      <currency>USD</currency>
+      <id>tomtom-xl-s</id>
+      <image>
+        <alt>TomTom XL S Portable GPS Unit, , large</alt>
+        <link>http://demo.ocapi.demandware.net/on/demandware.static/Demos-SiteGenesis-Site/Demos-electronics-catalog/default/v1318523571600/images/large/tomtom-xl-s.jpg</link>
+        <title><![CDATA[TomTom XL S Portable GPS Unit, ]]></title>
+      </image>
+      <name>TomTom XL S Portable GPS Unit</name>
+      <orderable>true</orderable>
+      <price>288.99</price>
+    </hit>
+    <hit>
+      <currency>USD</currency>
+      <id>tomtom-go-720</id>
+      <image>
+        <alt>TomTom Go 720 Portable GPS Unit, , large</alt>
+        <link>http://demo.ocapi.demandware.net/on/demandware.static/Demos-SiteGenesis-Site/Demos-electronics-catalog/default/v1318523571600/images/large/tomtom-go-720.jpg</link>
+        <title><![CDATA[TomTom Go 720 Portable GPS Unit, ]]></title>
+      </image>
+      <name>TomTom Go 720 Portable GPS Unit</name>
+      <orderable>true</orderable>
+      <price>599.99</price>
+    </hit>
+  </hits>
+  <next>http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/product_search?count=2&amp;start=2&amp;q=tomtom&amp;pretty_print=true&amp;format=xml&amp;client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</next>
+  <query>tomtom</query>
+  <refinements>
+    <refinement>
+      <attribute_id>cgid</attribute_id>
+      <label>Category</label>
+      <values>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Mens</label>
+          <value>mens</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Womens</label>
+          <value>womens</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Kids</label>
+          <value>kids</value>
+        </value>
+        <value>
+          <hit_count>4</hit_count>
+          <label>Electronics</label>
+          <value>electronics</value>
+          <values>
+            <value>
+              <hit_count>0</hit_count>
+              <label>Televisions</label>
+              <value>electronics-televisions</value>
+            </value>
+            <value>
+              <hit_count>0</hit_count>
+              <label>Digital Cameras</label>
+              <value>electronics-digital-cameras</value>
+            </value>
+            <value>
+              <hit_count>0</hit_count>
+              <label>iPod &amp; MP3 Players</label>
+              <value>electronics-digital-media-players</value>
+            </value>
+            <value>
+              <hit_count>4</hit_count>
+              <label>GPS Navigation</label>
+              <value>electronics-gps-units</value>
+              <values/>
+            </value>
+            <value>
+              <hit_count>0</hit_count>
+              <label>Gaming</label>
+              <value>electronics-gaming</value>
+            </value>
+          </values>
+        </value>
+      </values>
+    </refinement>
+    <refinement>
+      <attribute_id>c__refinementColor</attribute_id>
+      <label>Color</label>
+      <values>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Beige</label>
+          <presentation_id>beige</presentation_id>
+          <value>Beige</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Black</label>
+          <presentation_id>black</presentation_id>
+          <value>Black</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Blue</label>
+          <presentation_id>blue</presentation_id>
+          <value>Blue</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Brown</label>
+          <presentation_id>brown</presentation_id>
+          <value>Brown</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Green</label>
+          <presentation_id>green</presentation_id>
+          <value>Green</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Grey</label>
+          <presentation_id>grey</presentation_id>
+          <value>Grey</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Orange</label>
+          <presentation_id>orange</presentation_id>
+          <value>Orange</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Pink</label>
+          <presentation_id>pink</presentation_id>
+          <value>Pink</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Red</label>
+          <presentation_id>red</presentation_id>
+          <value>Red</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>White</label>
+          <presentation_id>white</presentation_id>
+          <value>White</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Yellow</label>
+          <presentation_id>yellow</presentation_id>
+          <value>Yellow</value>
+        </value>
+        <value>
+          <hit_count>0</hit_count>
+          <label>Miscellaneous</label>
+          <presentation_id>miscellaneous</presentation_id>
+          <value>Miscellaneous</value>
+        </value>
+      </values>
+    </refinement>
+    <refinement>
+      <attribute_id>price</attribute_id>
+      <label>Price</label>
+      <values>
+        <value>
+          <hit_count>1</hit_count>
+          <label>$50 - $99.99</label>
+          <value>(50..100)</value>
+        </value>
+        <value>
+          <hit_count>2</hit_count>
+          <label>$100 - $499.99</label>
+          <value>(100..500)</value>
+        </value>
+        <value>
+          <hit_count>1</hit_count>
+          <label>$500 - $999.99</label>
+          <value>(500..1,000)</value>
+        </value>
+      </values>
+    </refinement>
+    <refinement>
+      <attribute_id>brand</attribute_id>
+      <label>Brand</label>
+      <values>
+        <value>
+          <hit_count>4</hit_count>
+          <label>TomTom</label>
+          <value>TomTom</value>
+        </value>
+      </values>
+    </refinement>
+    <refinement>
+      <attribute_id>c__batteryType</attribute_id>
+      <label>Type</label>
+      <values>
+        <value>
+          <hit_count>4</hit_count>
+          <label>Lithium Polymer</label>
+          <value>Lithium Polymer</value>
+        </value>
+      </values>
+    </refinement>
+    <refinement>
+      <attribute_id>c__gpsType</attribute_id>
+      <label>GPS Type</label>
+      <values>
+        <value>
+          <hit_count>4</hit_count>
+          <label>Automotive</label>
+          <value>0010</value>
+        </value>
+      </values>
+    </refinement>
+    <refinement>
+      <attribute_id>c__gpsFeatures</attribute_id>
+      <label>Features</label>
+      <values>
+        <value>
+          <hit_count>4</hit_count>
+          <label>3D</label>
+          <value>0030</value>
+        </value>
+        <value>
+          <hit_count>2</hit_count>
+          <label>Bluetooth®</label>
+          <value>0090</value>
+        </value>
+        <value>
+          <hit_count>2</hit_count>
+          <label>FM Traffic</label>
+          <value>0050</value>
+        </value>
+        <value>
+          <hit_count>2</hit_count>
+          <label>MP3 Player</label>
+          <value>0070</value>
+        </value>
+        <value>
+          <hit_count>4</hit_count>
+          <label>Preloaded</label>
+          <value>0010</value>
+        </value>
+        <value>
+          <hit_count>1</hit_count>
+          <label>Speech Recognition</label>
+          <value>0100</value>
+        </value>
+        <value>
+          <hit_count>4</hit_count>
+          <label>Touch Screen</label>
+          <value>0040</value>
+        </value>
+        <value>
+          <hit_count>4</hit_count>
+          <label>Voice Prompts</label>
+          <value>0020</value>
+        </value>
+      </values>
+    </refinement>
+    <refinement>
+      <attribute_id>c__resolution</attribute_id>
+      <label>Resolution</label>
+      <values>
+        <value>
+          <hit_count>1</hit_count>
+          <label>400 x 300</label>
+          <value>400 x 300</value>
+        </value>
+        <value>
+          <hit_count>3</hit_count>
+          <label>480 x 272</label>
+          <value>480 x 272</value>
+        </value>
+      </values>
+    </refinement>
+    <refinement>
+      <attribute_id>c__displaySize</attribute_id>
+      <label>Display Size</label>
+      <values>
+        <value>
+          <hit_count>1</hit_count>
+          <label>3.5 inches</label>
+          <value>3.5 inches</value>
+        </value>
+        <value>
+          <hit_count>3</hit_count>
+          <label>4.3 inches</label>
+          <value>4.3 inches</value>
+        </value>
+      </values>
+    </refinement>
+  </refinements>
+  <selected_refinements/>
+  <selected_sorting_option>best-matches</selected_sorting_option>
+  <sorting_options>
+    <sorting_option>
+      <id>best-matches</id>
+      <label>Best Matches</label>
+    </sorting_option>
+    <sorting_option>
+      <id>price-high-to-low</id>
+      <label>Price High To Low</label>
+    </sorting_option>
+    <sorting_option>
+      <id>price-low-to-high</id>
+      <label>Price Low To High</label>
+    </sorting_option>
+    <sorting_option>
+      <id>product-name-ascending</id>
+      <label>Product Name Ascending</label>
+    </sorting_option>
+    <sorting_option>
+      <id>product-name-descending</id>
+      <label>Product Name Descending</label>
+    </sorting_option>
+    <sorting_option>
+      <id>brand</id>
+      <label>Brand</label>
+    </sorting_option>
+    <sorting_option>
+      <id>most-popular</id>
+      <label>Most Popular</label>
+    </sorting_option>
+    <sorting_option>
+      <id>top-sellers</id>
+      <label>Top Sellers</label>
+    </sorting_option>
+  </sorting_options>
+  <start>0</start>
+  <total>4</total>
+</product_search_result>

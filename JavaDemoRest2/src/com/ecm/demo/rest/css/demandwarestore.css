@@ -1,0 +1,152 @@
+/***********************************************/
+/* PAGE STRUCTURE CSS                          */
+/***********************************************/
+#container {border:0;width:100%;background-image:url(../images/background_mainpage.gif);background-repeat:repeat-x;}
+#header {height:13.2em;margin:0 auto;width:96em;}
+#main {margin:auto;position:relative;top:0;width:96em;}
+#footer {width:100%;height:9.36em;margin:6.45em auto 0;background-image:url(../images/background_mainpage_footer.gif);background-position:top left;}
+
+/***********************************************/
+/* PAGE ELEMENT STYLING CSS                    */
+/***********************************************/
+
+td.detailscolumn .price {font-family:Arial, Helvetica, Verdana, sans-serif;font-size:1.0em;font-style:normal;}
+
+/***** jQuery Dialog Skinning *****/
+.ui-widget.quickview, .ui-widget.ui-dialog{-moz-border-radius-bottomleft:12px;-moz-border-radius-bottomright:12px;-moz-border-radius-topleft:12px;-moz-border-radius-topright:12px;}
+.ui-dialog .ui-dialog-title{font-size:1.3em;}
+.ui-dialog .ui-dialog-titlebar{background-image:url(../images/background_bar.gif);background-position:top left;-moz-border-radius-bottomleft:0px;-moz-border-radius-bottomright:0px;-moz-border-radius-topleft:12px;-moz-border-radius-topright:12px;}
+.ui-dialog-titlebar-close .ui-icon {background-image:url(../images/ui-icons_256x240.png);}
+
+/* HEADER/FOOTER COMPONENTS (Logo, Search, User Info, Mini Cart, Links, Category Menu)
+--------------------------------------------------------------------------------------- */
+
+/***** Header Logo *****/		
+#header h1.logo a {background:url(../images/logo.gif) no-repeat center right /* Company Logo */;height:2.1em /* Sets overall height of header */;left:45px;top:11px;}
+	
+/***** Search Bar *****/
+.sitesearch {top:30px;background:transparent url(../images/background_search.png) no-repeat top right !important;}
+.sitesearch form.simplesearch input.simplesearchinput {background-color:transparent !important;border:0;color:black;height:1.82em;margin:0px;padding:0px;width:17.72em;}
+.sitesearch form.simplesearch input.simplesearchinput:focus {background-color:transparent;}
+.sitesearch button {background:transparent none;border:0;height:2.22em;width:2.55em;}
+.sitesearch button span {background:transparent none;visibility:hidden;}
+
+/***** HEADER/FOOTER Links (Store Locator, Help, Etc.) *****/
+.generalnav {top:3px;font-size:1em;color:white;}
+.generalnav ul li a {color:white;}
+.generalnav ul li a:hover {color:white;}
+
+/***** User Information (Welcome Message, Login, Register, etc.) *****/
+.headercustomerinfo {top:17px;color:#E1BA93;}
+.headercustomerinfo a {color:#E1BA93;}
+
+/* CATEGORY DEPARTMENTS MENU BAR
+--------------------------------------------------------------------------------------- */
+.categorymenu {top:82px;background-color:transparent;border:0px;font-size:1.1em;font-weight:bold;height:2.72em;text-align:left;}
+.categorymenu a, .categorymenu a:visited {color:#fff;min-width:0.09em; padding:1px 40px 8px 5px;}
+.categorymenu a:hover {background:transparent url(../images/space.gif) no-repeat top left;color:#E1BA93;}
+.categorymenu ul ul {background:transparent url(../images/background_dropdown_nav.png) top left;border:0px;padding:15px 0 8px 0;top:19px;width:10.72em;}
+* html .categorymenu ul ul {background:transparent url(../images/background_dropdown_nav.gif) top left;}
+
+.categorymenu ul ul a, .categorymenu ul ul a:visited {color:#fff;padding:5px 5px;}
+.categorymenu ul ul a:hover {background-color:#564f47;color:#439dd1;font-style:italic;}
+
+ COPYRIGHT *****/
+.copyright {margin:0px;}
+	
+/***** Header Slots CSSSLOTS STYLING *****/
+.headerbanner {background:transparent url(../images/background-header-banner-slot.gif) top left;height:4.2em;top:10px;}
+.headerbar {color:#80171c;top:108px;}
+
+/* HOME PAGE
+--------------------------------------------------------------------------------------- */
+.homepage {margin-top:8px;}
+
+.pt_storefront .genericBackgroundHeader {background-color:#49433A;height:2.4em;width:17.3em;text-align:center;}
+.pt_storefront .genericBackgroundFooter {background-color:#49433A;height:2em;width:17.3em;}
+.pt_storefront .staticBackground {height:0.8em;width:17.3em;}
+.pt_storefront .staticBackground .corners {display:block;width:17.3em;height:0.8em;}
+.pt_storefront .staticBackground .genericCornerBackground {float:left;height:0.8em;width:15.3em;background-color:#49433A;}
+.pt_storefront .verticalcarouselheader {height:3em;width:17.3em;margin-top:12px;}
+.pt_storefront .verticalcarouselheader .headerText {height:1.4em;width:12.7em;}
+.pt_storefront .verticalcarouselfooter {height:2.6em;width:17.3em;}
+.pt_storefront .verticalcarousel {height:53.7em;width:17.1em;}
+.pt_storefront .verticalcarousel a {font-weight:bold;font-size:1.3em;line-height:1em;color:#555555;}
+.pt_storefront .jcarousel-container-vertical {top:0px;border-left:1px solid brown;border-right:1px solid brown;}
+.pt_storefront .jcarousel-clip-vertical {height:100%;}
+.pt_storefront .jcarousel-next-vertical {border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9;background-color:#f7f7f7;bottom:0px;left:0px;height:1.3em;width:17.1em;}
+.pt_storefront .jcarousel-prev-vertical {border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9;background-color:#f7f7f7;top:0px;left:0px;height:1.3em;width:17.1em;}
+.pt_storefront .prevInner {background-color:transparent;background-image:url(../../../images/carousol_prev-vertical.gif);background-repeat:no-repeat;background-position:50% 31%;width:17.1em;height:1.2em;}
+.pt_storefront .nextInner {background-color:transparent;background-image:url(../../../images/carousol_next-vertical.gif);background-repeat:no-repeat;background-position:50% 68%;width:17.1em;height:1.2em;}
+.pt_storefront .prevInner:hover {background-color:transparent;background-image:url(../../../images/carousol_prev-vertical.gif);background-repeat:no-repeat;background-position:50% -5%;width:17.1em;height:1.2em;}
+.pt_storefront .nextInner:hover {background-color:transparent;background-image:url(../../../images/carousol_next-vertical.gif);background-repeat:no-repeat;background-position:50% 104%;width:17.1em;height:1.2em;}
+.pt_storefront .jcarousel-prev-disabled-vertical, .pt_storefront .jcarousel-prev-disabled-vertical:hover, .pt_storefront .jcarousel-prev-disabled-vertical:active {background-position:0px -96px;}
+.pt_storefront .jcarousel-prev-vertical:hover {border-top:1px solid black;border-bottom:1px solid black;}
+.pt_storefront .jcarousel-next-vertical:hover {border-top:1px solid black;border-bottom:1px solid black;}
+
+/* SEARCH RESULTS
+--------------------------------------------------------------------------------------- */
+/* These styles create the default look for Product display with search results, cross sells and other places where multiple products are displayed. */
+.productlisting .product .name a {color:#555555;font-size:1.2em;font-weight:bold;}
+.producttile .image .quickviewbutton a {background-image:url(../images/quickview.gif);}
+
+
+/***** BREADCRUMB STYLES *****/
+.breadcrumb {margin:1.909em 0 1.454em 0.909em;font-size:1.1em;}
+.refinementname {font-style:italic;}
+.refinementvalue, .refinementname {font-family:georgia,Times New Roman,Times,serif;}
+
+/* Paging */
+.pagination{padding:8px 0 8px 0}
+.pagination a, .pagination a:visited {text-decoration:none;}
+.pagination a:hover {color:#000; text-decoration:underline;}
+.pagination li:hover {color:#000;border:1px solid #000;background-color:#ccc;}
+.pagination ul li, .pagination li.currentpage {padding:2px 4px 4px 4px; border:1px solid #ccc;}
+.pagination li.currentpage {border:1px solid #000;color:#fff;background-color:#7e191d;}
+.pagination li.firstlast{padding:0px;border:0px none #000;background:transparent;}
+
+/* RESULTS REFINEMENT (Left Column Navigation)
+--------------------------------------------------------------------------------------- */
+.searchrefine {margin:2.4em 0 2.4em 0;padding:0 0 1.6em 0;}
+.searchrefine h1 {background-color:#746f66;color:#e7c8a9;font-weight:bold;height:1.3em;line-height:1.5em;padding:0 0 0 0.53em;margin-top:-5px;}
+.searchrefine .searchcategories {padding:0 0 1.5em 0.4em;}
+.searchrefine .footer {width:17.5em;height:2.1em;}
+.searchrefine .staticBackground {width:17.5em;height:0.8em;}
+.searchrefine .staticBackground .corners {display:block;width:17.5em;height:0.8em;}
+.navgroup {padding-left:0.363em;padding-right:0.727em;}
+#searchrefinements {border-left:1px solid #746f66; border-right:1px solid #746f66;}
+
+/* PRODUCT DETAIL PAGE
+--------------------------------------------------------------------------------------- */
+.productdetail .productimage{border:0px;}
+.productdetail .price .standardprice {color:#000000;font-size:.7em;}
+.productdetail .addtocartbar {background-image:url(../images/background_bar.gif);background-position:top left;}
+
+/***** Product Next/Previous on Product Detail Page (productnav.isml)*****/
+.productdetail .productnavigation {width:20.8em;}
+.productdetail .productnavigation span {visibility:hidden; display:none;}
+.productdetail .productnavigation .productprevious {background:transparent url(../images/previous.gif) no-repeat 0 10px; border-right:1px solid #ccc; float:left; width:10.3em;}
+.productdetail .productnavigation .productnext {background:transparent url(../images/next.gif) no-repeat right 10px; float:left; width:10.3em;}
+.productdetail .productnavigation .productprevious img{padding:0px 0px 0px 38px;}
+	
+/* MINI-CART
+--------------------------------------------------------------------------------------- */	
+.minicart {top:62px;color:white;}
+.minicart a {color:white;}
+.minicart .minicarttotal {background:transparent url(../images/cart_icon.gif) no-repeat 0 0;}
+.minicart .minicarttotal .emptycart {margin-left:15px;}
+.minicart .minicarttotal a {margin-left:15px;}
+
+/* ERROR MESSAGES
+--------------------------------------------------------------------------------------- */
+/***** Cookies / Javascript disabled *****/	
+.disabledcontainer {background:transparent url(../images/background_header_disabled_message.gif) repeat-x top left;}
+.disabledmessage {background:transparent url(../images/background_header_disabled_message_bigicon.gif) no-repeat top left;}
+.disabledmessage p {font-family:georgia,Times New Roman,Times,serif;}
+
+/* PRICING */
+.price {font-family:georgia,Times New Roman,Times,serif;font-size:1.2em;font-style:italic;}
+
+/* MY ACCOUNT/CUSTOMER SERVICE
+--------------------------------------------------------------------------------------- */
+#leftcolumn .contentasset{margin-top:2.4em;}
