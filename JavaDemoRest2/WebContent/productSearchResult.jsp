@@ -60,7 +60,7 @@ function getProductResult() {
 			data: {"product_id":"882763039226","quantity":1.00},
 			success : function(data){
 				
-				alert('Add to Cart Successful'+ETag);
+				alert('Add to Cart Successful');
 			}
 		});
 	}	
