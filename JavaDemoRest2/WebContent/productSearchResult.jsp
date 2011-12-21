@@ -79,6 +79,8 @@ function getProductResult() {
 </script>
 </head>
 <body>
+	<jsp:include page="header.jsp" />
+
 	<form action="shop/v1/product_search" method="post">
 		<div id="category">Categories are:</div>
 		<div id="productname">Productname</div>
