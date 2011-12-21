@@ -19,7 +19,7 @@
 </div>
 		
 <jsp:include page="header.jsp" />
-<jsp:include page="menu.jsp" />
+<jsp:include page="newmenu.jsp" />
 		
 <div id="cookiesdisabled" class="disabledcontainer hide">
 </div>
