@@ -4,38 +4,85 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="../default.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../demandwarestore.css" media="screen" />
-
-<title>Online Shoppe : Login</title>
+<link rel="stylesheet" type="text/css" href="css/default.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/demandwarestore.css" media="screen" />
+<title>Login</title>
+<script type="text/javascript">
+	function init() {
+		getCategory();
+	}
+</script>
 </head>
-<body>
 
+
+<body id="ext-gen6" class=" ext-gecko ext-gecko2" onload="init()">
+	<!-- error in Login -->
   <div class="label" style="clear:left;display:inline;font-size: 1.1em;font-weight:bold;text-align:right">
       <div class="label.errormessage" style="font-size:1.0em;font-weight:normal;text-align:left">
       </div>
   </div>
-	<form action="login" method="post">
-		<table name="LoginTable" rows="4" Cols="2" border="0">
-			<tr>
-				<td>
-					<h3>Please Login:</h3>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>User Name:</td>
-				<td><input type="text" name="login" id="login" /></td>
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input type="password" name="password" id="password" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Login" /></td>
-			</tr>
-		</table>
-	</form>
+  
+	<!-- container Layout -->
+	<div id="container" class="pt_account">
+		<div id="shortcuts"></div>
+		
+		<jsp:include page="header.jsp" />
+		<jsp:include page="newmenu.jsp" />
+		
+		<!-- Login specific layout -->
+		<div id="cookiesdisabled" class="disabledcontainer hide"></div>
+		<div id="main">
+			<div id="leftcolumn">
+				<div class="accountnavtext"> </div>
+				<div class="clear"></div>
+			</div>
+			<div id="content">
+				<div class="breadcrumb"></div>
+				<div class="accountlogin">
+					<h1>My Account</h1>
+					<div class="logincreate"><h2>New Customers</h2></div>
+					<div class="logincustomers">
+					
+						<form action="login" method="post">
+							<h2>Returning Customers</h2>
+							<div class="returningcustomers">
+								<div class="username">
+									<label class="label"><span class="requiredindicator">*</span>User Name:</label>
+									<div class="value"><input type="text" name="login" id="login" /></div>
+									<div class="clear"></div>
+								</div>
+								<div class="password">
+									<label class="label"><span class="requiredindicator">*</span>Password:</label>
+									<div class="value"> <input type="password" name="password" id="password" /></div>
+									<div class="clear"></div>
+								</div>
+								<div class="clear"></div>
+								<div class="formactions">
+									<button name="dwfrm_login_login" value="Login" type="submit">
+									<span>Login</span>
+									</button>
+									
+								</div>
+							</div>
+							<div class="clear"></div>
+						</form>
+						
+					</div><!-- end of logincustomers -->
+					<div class="logingeneral"><h2>Check Order</h2></div>
+				</div><!-- end of accountlogin -->
+			</div><!-- end of content -->
+			<div class="clear"></div>
+		</div><!-- end of main -->
+		
+		
+		<jsp:include page="footer.jsp" />
+		
+	</div><!-- end of container div -->
+
 </body>
 </html>
+
+
+
+
 
