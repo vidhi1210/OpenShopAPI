@@ -1,7 +1,10 @@
 package com.ecm.demo.rest;
 
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +26,28 @@ public class CustomerAccountServlet extends HttpsServlet {
 			}
 			
 			Object res = builder.get(Object.class);
-			System.out.println(res);
+				StringTokenizer sto = new StringTokenizer(res.toString(),",");
+			Hashtable accountDetails = new Hashtable();
+			StringBuilder sb1 = new StringBuilder();
+			Object sb = new StringBuilder();
+						while (sto.hasMoreElements()) {
+				Object object = (Object) sto.nextElement();
+				StringTokenizer tkn1 = new StringTokenizer(object.toString(),"=");
+				while (tkn1.hasMoreElements()) {
+					Object tk1 = (Object) tkn1.nextElement();
+					Object tk2 = (Object) tkn1.nextElement();
+					accountDetails.put(tk1.toString().trim(), tk2.toString().trim());
+							}
+		
+				sb=accountDetails.get(new String("first_name"));
+				
+			}
+			res = sb;
+		
+			
+		        
 			request.setAttribute("customerAccount", res);
+			
 			request.getRequestDispatcher("/customerAccount.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
