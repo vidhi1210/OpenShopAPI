@@ -23,6 +23,12 @@
   </servlet>
   <servlet>
     <description></description>
+    <display-name>MenuServlet</display-name>
+    <servlet-name>MenuServlet</servlet-name>
+    <servlet-class>com.ecm.demo.rest.MenuServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
     <display-name>CustomerAccountServlet</display-name>
     <servlet-name>CustomerAccountServlet</servlet-name>
     <servlet-class>com.ecm.demo.rest.CustomerAccountServlet</servlet-class>
@@ -48,6 +54,10 @@
   <servlet-mapping>
     <servlet-name>CustomerAccountServlet</servlet-name>
     <url-pattern>/customerAccount</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>MenuServlet</servlet-name>
+    <url-pattern>/menu</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
