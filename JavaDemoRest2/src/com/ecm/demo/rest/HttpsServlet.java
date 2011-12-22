@@ -11,6 +11,11 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.client.urlconnection.HTTPSProperties;
 
+/**
+ * Test commemnt from Bhavna
+ * @author Administrator
+ *
+ */
 public class HttpsServlet extends HttpServlet {
 
 	protected static Client client = null;
