@@ -12,8 +12,8 @@ import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.client.urlconnection.HTTPSProperties;
 
 /**
- * Test commemnt from Bhavna
- * @author Administrator
+ * 
+ * @author Harsh Modha
  *
  */
 public class HttpsServlet extends HttpServlet {
