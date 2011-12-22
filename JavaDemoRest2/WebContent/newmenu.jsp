@@ -4,72 +4,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
- 
-
+<% System.out.println("newmenu1"); %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Get the menu</title>
-<script type="text/javascript">
+<link rel="stylesheet" type="text/css" href="css/default.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/demandwarestore.css" media="screen" />
 
-function getCategory() {
-	jQuery.ajax({
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
 		type : "POST",
-		url : "newmenu",
+		url : "menu",
 		dataType : "json",
 		success : function(data) {
-			alert("D");
-			window.categories = data;
-			
-			alert("gg");
+			$.each(data.categories, function(i, cat){
+				$("#navigation ul").append('<li><a href="/user/messages">' + cat.name + '</a></li>');
+			});
 		}
-	}
-	);
- }
-			
-			
-		//	jQuery(window.categories).find("categories").each(
-		//			function() {
-		//				jQuery("#category").append(
-		//						jQuery(this).find(
-		//								"categories:contains('id')")
-		//								//.parent()
-					//					.find('categories').append(":"));
-		//		});
-	//	}
-//	});
-//}
-			
-	//	;
-				
-					
-			
-		//}
-	
-	//});
-
-
-
-
+	 });
+	});
 	
 </script>
 </head>
-<body>
+<body onload="loadingMenu()">
 	<form action="shop/v1/categories" method="post">
 	<div id="navigation" class="categorymenu">
-
+		<ul class="sf-menu sf-js-enabled">
 			
-			
-
+		</ul>	
 	</div>		
-		
 	</form>
-	
-
-
 </body>
 </html>
-
-
-
-
-
