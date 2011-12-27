@@ -9,11 +9,10 @@
 <title>Login</title>
 <script type="text/javascript">
 	function init() {
-		getCategory();
+	//	getCategory();
 	}
 </script>
 </head>
-
 
 <body id="ext-gen6" class=" ext-gecko ext-gecko2" onload="init()">
 	<!-- error in Login -->
@@ -27,7 +26,6 @@
 		<div id="shortcuts"></div>
 		
 		<jsp:include page="header.jsp" />
-		<jsp:include page="newmenu.jsp" />
 		
 		<!-- Login specific layout -->
 		<div id="cookiesdisabled" class="disabledcontainer hide"></div>

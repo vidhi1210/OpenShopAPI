@@ -14,8 +14,10 @@
 		</form>		
 	</div>
 	<div id="minicart" class="minicart"></div>
+	<jsp:include page="newmenu.jsp" />
+	
 	<div class="dw-object dw-object-rinclude" style="display:none;"></div>
 		<div class="headerbanner"></div>
 	<div class="headerbar"></div>
 	<div class="clear"></div>
-</div><!-- end of header-->
+</div><!-- end of header div-->	
