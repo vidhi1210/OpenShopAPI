@@ -1,39 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<jsp:include page="header.jsp" />
+<title>Online Shop : Product Search Result</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Online Shoppe : Product Search Result</title>
 <script type="text/javascript">
+$(document).ready(function(){ 
+	$('#productListing').setTemplate($("#productListingTemplate").html() ) ;
+	$('#searchrefinements').setTemplate($("#searchRefinmentTemplate").html());
 	
-function getXMLHttp() {
-    var xmlHttp = new XMLHttpRequest();
-
-    return xmlHttp;
-}
-
-
-function getProductResult() {
 	var param = "<%=request.getParameter("q")%>";
-		jQuery.ajax({
-			type : "POST",
+		$.ajax({
+			type : "GET",
 			url : "productSearch" + "?q=" + param,
-			dataType : "xml",
+			dataType : "json",
 			success : function(data) {
-				$(data).find("hit").each(function() {
-					var $productdata = $(this);
-					var name = $productdata.find('name').eq(0).text();
-					$("#productname").append(name);
-					var price = $productdata.find('price').eq(0).text();
-					$("#productprice").append(price);
-				});
+				$('#searchrefinements').processTemplate(data);
+				$('#productListing').processTemplate(data);
+				
 			}
 		});
-	}
+});
 
 	function getCategory() {
 		jQuery.ajax({
@@ -77,24 +64,90 @@ function getProductResult() {
 	}	
 	
 </script>
-</head>
-<body>
-	<jsp:include page="header.jsp" />
 
-	<form action="shop/v1/product_search" method="post">
-		<div id="category">Categories are:</div>
-		<div id="productname">Productname</div>
-		<div id="productprice">Product Price</div>
-		<div id="productshortdescription">Product Short Description</div>
-		<input type="button" onClick="javascript:getProductResult();"
-			value="Click to get product search  results" /> 
-		<input type="button" onClick="javascript:getCategory();" 
-			value="Click to get Categories" />
-	</form>
-	<input type="button" onClick="javascript:addToCart();" 
-			value="Add to Cart" />
-			
-	<input type="button" onClick="javascript:viewCart();" 
-			value="View Cart" />
-</body>
-</html>
+
+<div id="main">
+		<div id="leftcolumn">
+			<div id="subnav" class="searchrefine">
+				<h1 class="searchheader">Search Results</h1>
+				<div class="searchrefinemessage">Refine Your Results By:</div>
+				<div id="searchrefinements" class="searchrefinements">
+					<script type="text/html" id="searchRefinmentTemplate">
+					{#foreach $T.refinements as refinement}
+					{#if $T.refinement.label == 'Category'}					
+					<div id="refinement-category" class="searchcategories refinement">
+						<div class="searchcategory">
+							<span>{$T.refinement.label}</span>
+						</div>
+						<ul id="category-level-1" class="refinementcategory">
+						{#foreach $T.refinement.values as val}
+								<li class="expandable"><a class="refineLink " title="{$T.val.value}">{$T.val.value}</a></li>
+						{#/for}
+						</ul>
+					{#/if}
+					</div>
+										
+					{#if $T.refinement.label == 'Price'}
+					<div id="refinement-price" class="navgroup refinement">
+						<h2>{$T.refinement.label}</h2>
+						<div class="refinedclear"></div>
+						<div class="refineattributes">
+							<div class="pricerefinement">
+								<ul>
+									{#foreach $T.refinement.values as val}
+									<li>
+										<a class="refineLink" href="">{$T.val.label}</a>
+									</li>
+									{#/for}
+							</div>
+						</div>
+					</div>
+					{#/if}
+ 					{#/for}
+					</script>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+				<div class="breadcrumb">
+					<a class="home" title="Home"
+						href="http://dev09.usc.ecommera.demandware.net">Home</a> <span
+						class="divider">&gt;</span> <span class="resultstext">Your
+						Search results for:tomtom</span>
+				</div>
+				<div class="producthits">
+					<div id="search" class="search">
+						<div class="productresultarea">
+							<div class="productisting" id="productListing">
+							<script type="text/html" id="productListingTemplate">
+						        {#foreach $T.hits as hit}	
+								<div class="product producttile">
+									<div class="image">
+										<div class="thumbnail">
+											<p class="productimage">
+												<a title="{$T.hit.image.title}" href="">
+													<img class="" width="113" height="113" title="{$T.hit.image.title}" alt="{$T.hit.image.alt}" src="{$T.hit.image.link}"/>
+												</a>
+											</p>
+										</div>
+									</div>
+									<div class="name">
+										<a title="{$T.hit.name}" href=""> {$T.hit.name} </a>
+									</div>	
+									<div class="pricing">
+										<div class="price">
+											<div class="discountprice">
+												<div class="standardprice"> {$T.hit.price} </div>
+												<div class="salesprice"> {$T.hit.price} </div>
+											</div>
+										</div>
+									</div>
+								</div>
+								{#/for}
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
