@@ -19,10 +19,10 @@ import com.sun.jersey.api.client.WebResource;
  */
 public class ProductSearchServlet extends HttpsServlet {
 
-		 
-		
+
+
 	private static final long serialVersionUID = 1L;
-	public static final String DW_HOST="http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/product_search?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&start=0&count=2&pretty_print=true&format=xml";
+	public static final String DW_HOST="http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/product_search?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&start=0&count=2&pretty_print=true";
 	public static final String QUERY = "q=";
 
 	/**
@@ -37,8 +37,8 @@ public class ProductSearchServlet extends HttpsServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
-		
-		
+
+
 	}
 
 	/**
@@ -47,17 +47,16 @@ public class ProductSearchServlet extends HttpsServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String dwUrl = DW_HOST + "&" + QUERY + request.getParameter("q") ;
+		String dwResponse = "";
 		
-		// using Jersy API
-		Client client = Client.create();
-		WebResource webResource = client.resource(dwUrl);
-		String s = webResource.get(String.class);
-				
-		response.setContentType("text/xml");
-	    PrintWriter out = response.getWriter();
-		
-		out.println(s);
-			
+		if(dwUrl != null || !dwUrl.equals("null")){
+			// using Jersy API
+			Client client = Client.create();
+			WebResource webResource = client.resource(dwUrl);
+			dwResponse = webResource.get(String.class);
+		}
+		PrintWriter out = response.getWriter();
+		out.println(dwResponse);
 	}
 
 	public static StringBuilder streamToBuffer(InputStream inputStream){
@@ -84,6 +83,6 @@ public class ProductSearchServlet extends HttpsServlet {
 		}
 		return buffer;
 	}
-	
-	
+
+
 }
