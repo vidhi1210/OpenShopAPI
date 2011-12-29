@@ -16,12 +16,12 @@ import com.sun.jersey.api.client.WebResource;
 /**
  * Servlet implementation class ViewCart
  */
-public class ViewCartServlet extends HttpsServlet {
+public class ViewMiniCartServlet extends HttpsServlet {
 	private static final long serialVersionUID = 1L;
        
 	public static final String DW_URL="https://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/basket/this?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&pretty_print=true";
      
-    public ViewCartServlet() {
+    public ViewMiniCartServlet() {
         super();
     }
 

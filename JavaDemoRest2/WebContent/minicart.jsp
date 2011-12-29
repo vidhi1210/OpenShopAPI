@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('#miniCartMain').setTemplate($("#miniCartTemplate").html() ) ;
 	$.ajax({
 			type : "GET",
-			url : "viewCart",
+			url : "viewMiniCart",
 			dataType : "json",
 			success : function(data) {
 				$('#miniCartMain').processTemplate(data);
@@ -15,11 +15,11 @@ $(document).ready(function(){
 	<div class="minicarttotal" id="miniCartMain">
 		<span class="cartlabel hide" >Cart:</span>
 			<script type="text/html" id="miniCartTemplate">
-			<a class="linkminicart" title="View Cart" href="">
+			<a class="linkminicart" title="View Cart" href="viewCart.jsp">
 			{#if $T.product_items.length == 0}
 				<span class="emptycart">Empty</span>
 			{#else}
-				<a class="linkminicart" title="View Cart" href="">
+				<a class="linkminicart" title="View Cart" href="viewCart.jsp">
 				{$T.product_items.length}&nbsp;Item,&nbsp;
 				<span class="totallabel">Total:</span>
 				&nbsp;{$T.product_total}

@@ -109,4 +109,25 @@
     <servlet-name>ViewCartServlet</servlet-name>
     <url-pattern>/viewCart</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewMiniCartServlet</display-name>
+    <servlet-name>ViewMiniCartServlet</servlet-name>
+    <servlet-class>com.ecm.demo.rest.ViewMiniCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMiniCartServlet</servlet-name>
+    <url-pattern>/viewMiniCart</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>CheckoutCartServlet</display-name>
+    <servlet-name>CheckoutCartServlet</servlet-name>
+    <servlet-class>com.ecm.demo.rest.CheckoutCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckoutCartServlet</servlet-name>
+    <url-pattern>/checkoutCart</url-pattern>
+  </servlet-mapping>
 </web-app>

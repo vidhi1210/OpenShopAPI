@@ -19,15 +19,51 @@
 	<div id="shortcuts"></div>
 	<div id="header">
 		<h1 class="logo">
-			<a href="#" title="Demandware SiteGenesis">Demandware SiteGenesis</a>
+			<a href="index.jsp" title="Demandware Shop API Demo">Demandware SiteGenesis</a>
 		</h1>
 
 		<div class="dw-object dw-object-rinclude" style="display: none;"></div>
-		<div class="headercustomerinfo"></div>
-		<div class="generalnav"></div>
+		<div class="headercustomerinfo">
+			<span class="welcomemessage">Welcome:</span>
+			<% if(request.getSession().getAttribute("cookies") != null){ %>
+				<a class="username" title="My Account" href="">
+					<span class="username"><%= request.getSession().getAttribute("currentUserName") %></span>
+				</a>
+					<span class="divider">|</span>
+				<a class="usernot" href="logout">(not <%= request.getSession().getAttribute("currentUserName") %>)?</a>
+				
+			<% } else { %>
+				<a class="userlogin" href="login.jsp" title="Login">Login</a>
+				<span class="divider">|</span>
+				<span>Register</span>
+			<%} %>
+			
+			<div class="clear"></div>
+		</div>
+		<div class="generalnav">
+			<ul>
+				<li>
+					<span>Wish List</span>
+					<span class="divider">|</span>
+				</li>
+				<li>
+					<span>Gift Registry</span>
+					<span class="divider">|</span>
+				</li>
+				<li>
+					<span>Store Locator</span>
+					<span class="divider">|</span>
+				</li>
+				<li>
+					<span>Help</span>
+				</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+
 		<div class="sitesearch">
 			<!-- include search field here -->
-			<form action="productSearchResult.jsp" method="post">
+			<form action="productSearchResult.jsp" method="GET">
 				<input type="text" name="q" id="q" class="simplesearchinput" />
 				<button type="submit" value="Go" name="simplesearch">
 					<span>Go</span>

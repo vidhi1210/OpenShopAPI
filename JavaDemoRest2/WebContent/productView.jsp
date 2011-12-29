@@ -143,7 +143,7 @@ $(document).ready(function(){
 										</div>
 									</div>
 									<div>
-										<a title="Add to cart" href="addToCart?product_id={$T.hit.id}">Add To Cart</a>
+										<a title="Add to cart" href="/addToCart">Add To Cart</a>
 									</div>
 								</div>
 								{#/for}

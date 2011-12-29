@@ -36,7 +36,8 @@ public class LoginServlet extends HttpsServlet {
 			List<NewCookie> cookies = res.getCookies();
 			if(cookies.size() > 0){
 				request.getSession(true).setAttribute("cookies", cookies);
-				request.getRequestDispatcher("/home.jsp").forward(request, response);
+				request.getSession().setAttribute("currentUserName", request.getParameter("login").toString());
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			}
 			else{			
 				request.getRequestDispatcher("/unauthorized.jsp").forward(request, response);				
