@@ -15,6 +15,7 @@ import com.sun.jersey.api.client.WebResource;
 
 /**
  * Servlet implementation class ViewCart
+ * @author Harsh Modha
  */
 public class ViewMiniCartServlet extends HttpsServlet {
 	private static final long serialVersionUID = 1L;

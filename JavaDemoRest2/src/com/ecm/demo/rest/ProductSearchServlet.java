@@ -22,7 +22,7 @@ public class ProductSearchServlet extends HttpsServlet {
 
 
 	private static final long serialVersionUID = 1L;
-	public static final String DW_HOST="http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/product_search?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&start=0&count=2&pretty_print=true";
+	public static final String DW_HOST="http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/product_search?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&start=0&count=10&pretty_print=true";
 	public static final String QUERY = "q=";
 
 	/**
