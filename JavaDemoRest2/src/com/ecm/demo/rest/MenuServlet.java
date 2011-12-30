@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
-/**
+/** Test comment
  * Servlet implementation class MenuServlet
  */
 public class MenuServlet extends HttpServlet {
