@@ -55,7 +55,7 @@
     <servlet-name>CustomerAccountServlet</servlet-name>
     <url-pattern>/customerAccount</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MenuServlet</servlet-name>
     <url-pattern>/menu</url-pattern>
   </servlet-mapping>
@@ -119,8 +119,7 @@
     <servlet-name>ViewMiniCartServlet</servlet-name>
     <url-pattern>/viewMiniCart</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>CheckoutCartServlet</display-name>
     <servlet-name>CheckoutCartServlet</servlet-name>
@@ -130,4 +129,34 @@
     <servlet-name>CheckoutCartServlet</servlet-name>
     <url-pattern>/checkoutCart</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PageView</display-name>
+    <servlet-name>PageView</servlet-name>
+    <servlet-class>com.ecm.demo.rest.PageView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PageView</servlet-name>
+    <url-pattern>/PageView</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProductView</display-name>
+    <servlet-name>ProductView</servlet-name>
+    <servlet-class>com.ecm.demo.rest.ProductView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductView</servlet-name>
+    <url-pattern>/ProductView</url-pattern>
+  </servlet-mapping> 
+  <servlet>
+    <description></description>
+    <display-name>ProductDetailViewServlet</display-name>
+    <servlet-name>ProductDetailViewServlet</servlet-name>
+    <servlet-class>com.ecm.demo.rest.ProductDetailViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductDetailViewServlet</servlet-name>
+    <url-pattern>/ProductDetail</url-pattern>
+  </servlet-mapping>      
 </web-app>
