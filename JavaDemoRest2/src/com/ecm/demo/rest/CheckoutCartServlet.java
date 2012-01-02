@@ -1,8 +1,6 @@
 package com.ecm.demo.rest;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.sun.jersey.api.client.ClientResponse;
@@ -24,7 +21,8 @@ import com.sun.jersey.api.client.WebResource;
 public class CheckoutCartServlet extends HttpsServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public static final String URL_SET_CHECKOUT = "https://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/checkout/this?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&pretty_print=true";
+	//curl -i -b cookies.txt -c cookies.txt  -H "If-Match: $ETag" -X POST -k 'https://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/basket/this/!checkout?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&pretty_print=true'
+	public static final String URL_SET_CHECKOUT = "https://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/basket/this/!checkout?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&pretty_print=true";
 	
 	//curl -i -b cookies.txt -c cookies.txt -H "Content-Type: application/json" -H "If-Match: $ETag" -X POST -k -d '{"first_name":"first","last_name":"last","address1":"mystreet 11","city":"city","postal_code":"12345"}' 'https://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/checkout/this/!set_billing_address?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&pretty_print=true'
 	public static final String URL_BILLING_ADDRESS = "https://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/checkout/this/!set_billing_address?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
@@ -77,63 +75,38 @@ public class CheckoutCartServlet extends HttpsServlet {
 	public void setCheckout(HttpServletRequest request, HttpServletResponse response){
 		webResource = getClient().resource(URL_SET_CHECKOUT); 
 		WebResource.Builder builder = webResource.getRequestBuilder();
-		builder = setCookies(builder, request);
-		ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+		builder = setCookiesToRequest(builder, request);
+		
+		ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class);
 		setLastETag(request, clientResponse);
-		String cartJSON = clientResponse.getEntity(String.class);
-		System.out.println("set checkout>>" + cartJSON);
 	}
 
 	
 	public void setShippingMethod(HttpServletRequest request, HttpServletResponse response){
 		webResource = getClient().resource(URL_SHIPPING_METHOD); 
 		WebResource.Builder builder = webResource.getRequestBuilder();
-		builder = builder.header("If-Match", getLastETag(request));
-		builder = setCookies(builder, request);
-		ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, getShippngMethodBean("101"));
+		builder = setCookiesToRequest(builder, request);
+		
+		ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, getShippngMethodBean("001"));
 		setLastETag(request, clientResponse);
-		String cartJSON = clientResponse.getEntity(String.class);
-		System.out.println("shipping>>" + cartJSON);
 	}
 	
 	public void submitCheckout(HttpServletRequest request, HttpServletResponse response){
 		webResource = getClient().resource(URL_SUBMIT_CHECKOUT); 
 		WebResource.Builder builder = webResource.getRequestBuilder();
-		builder = setCookies(builder, request);		
-		ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, new PaymentCardDetailBean("Visa","holder","4111111111111111",8,2012,"123"));
+		builder = setCookiesToRequest(builder, request);		
+		
+		ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, new PaymentCardBean(new Payment_CardDetailBean("Visa","holder","4111111111111111",8,2012,"123")));
 		setLastETag(request, clientResponse);
-		String cartJSON = clientResponse.getEntity(String.class);
-		System.out.println("submit checkout>>" + cartJSON);
 	}
 	
-	public WebResource.Builder setCookies(WebResource.Builder builder, HttpServletRequest request){
-		List<NewCookie> cartCookies = (List<NewCookie>) request.getSession().getAttribute("cartCookies");
-		if(cartCookies != null){
-			for (Iterator iterator = cartCookies.iterator(); iterator.hasNext();) {
-				 builder = builder.cookie((NewCookie) iterator.next());
-			}
-		}
-
-		List<NewCookie> cookies = (List<NewCookie>) request.getSession().getAttribute("cookies");
-		if(cookies != null){
-			for (Iterator iterator = cookies.iterator(); iterator.hasNext();) {
-				 builder = builder.cookie((NewCookie) iterator.next());
-			}
-		}
-		return builder;
-	}
 	
 	public void setAddress(HttpServletRequest request, HttpServletResponse response, String url){
 		webResource = getClient().resource(url); 
-		
 		WebResource.Builder builder = webResource.getRequestBuilder();
-		
-		builder = builder.header("If-Match", getLastETag(request));
-		builder = setCookies(builder, request);
+		builder = setCookiesToRequest(builder, request);
 		
 		ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, getAddressBean("testFirst","testLast","testAddress1","testCity","testPostal_code"));
-		String cartJSON = clientResponse.getEntity(String.class);
-		System.out.println("address>>" + cartJSON);
 		setLastETag(request, clientResponse);
 	}
 	
@@ -149,20 +122,13 @@ public class CheckoutCartServlet extends HttpsServlet {
 	}
 	
 	@GET @Produces("application/json")
-	public PaymentCardDetailBean getPaymentCardDetailBean(String card_type, String holder, String number, int expiration_month, int expriation_year, String security_code ){
-		return new PaymentCardDetailBean(card_type, holder, number, expiration_month, expriation_year, security_code );
+	public Payment_CardDetailBean getPaymentCardDetailBean(String card_type, String holder, String number, int expiration_month, int expriation_year, String security_code ){
+		return new Payment_CardDetailBean(card_type, holder, number, expiration_month, expriation_year, security_code );
 	}
 	
-	public String getLastETag(HttpServletRequest req){
-		return req.getSession().getAttribute("lastETag") != null ? (String)req.getSession().getAttribute("lastETag") : "" ;
-	}
-	
-	public void setLastETag(HttpServletRequest req, ClientResponse clientResponse){
-		String eTag = clientResponse.getHeaders().get("ETag").toString();
-		StringBuilder eTagBuffer = new StringBuilder(eTag);
-		eTagBuffer = eTagBuffer.deleteCharAt(0);
-		eTagBuffer.deleteCharAt(eTagBuffer.length()-1);
-		req.getSession().setAttribute("lastETag", eTagBuffer.toString());
+	@GET @Produces("application/json")
+	public PaymentCardBean getPaymentCardBean(Payment_CardDetailBean payment_card ){
+		return new PaymentCardBean(payment_card);
 	}
 }
 
@@ -194,15 +160,14 @@ class ShippingMethodBean{
 
 @XmlRootElement
 class PaymentCardBean{
-	public String id;
+	public Payment_CardDetailBean payment_card;
 	
-	public PaymentCardBean(String id){
-		this.id = id;
+	public PaymentCardBean(Payment_CardDetailBean payment_card){
+		this.payment_card = payment_card;
    }
 }
 
-
-class PaymentCardDetailBean{
+class Payment_CardDetailBean{
 	public String card_type;
 	public String holder;
 	public String number;
@@ -210,7 +175,7 @@ class PaymentCardDetailBean{
 	public int expiration_year;
 	public String security_code;
 	
-	public PaymentCardDetailBean(String card_type, String holder, String number, int expiration_month, int expriation_year, String security_code ){
+	public Payment_CardDetailBean(String card_type, String holder, String number, int expiration_month, int expriation_year, String security_code ){
 		this.card_type = card_type;
 		this.holder = holder;
 		this.number= number;

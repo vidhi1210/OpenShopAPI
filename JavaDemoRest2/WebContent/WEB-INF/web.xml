@@ -143,20 +143,10 @@
     <description></description>
     <display-name>ProductView</display-name>
     <servlet-name>ProductView</servlet-name>
-    <servlet-class>com.ecm.demo.rest.ProductView</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ProductView</servlet-name>
-    <url-pattern>/ProductView</url-pattern>
-  </servlet-mapping> 
-  <servlet>
-    <description></description>
-    <display-name>ProductDetailViewServlet</display-name>
-    <servlet-name>ProductDetailViewServlet</servlet-name>
     <servlet-class>com.ecm.demo.rest.ProductDetailViewServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ProductDetailViewServlet</servlet-name>
-    <url-pattern>/ProductDetail</url-pattern>
-  </servlet-mapping>      
+    <servlet-name>ProductView</servlet-name>
+    <url-pattern>/productView</url-pattern>
+  </servlet-mapping> 
 </web-app>

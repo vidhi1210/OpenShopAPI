@@ -1,10 +1,16 @@
 package com.ecm.demo.rest;
 
+import java.util.Iterator;
+import java.util.List;
+
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.NewCookie;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -69,6 +75,45 @@ public class HttpsServlet extends HttpServlet {
 		} catch (java.security.GeneralSecurityException ex) {
 		}
 		return ctx;
+	}
+
+	public String getLastETag(HttpServletRequest req){
+		if(req.getSession() != null && req.getSession().getAttribute("lastETag") != null ){
+			return (String)req.getSession().getAttribute("lastETag");
+		} else {
+			return "" ;
+		}
+	}
+
+	public void setLastETag(HttpServletRequest req, ClientResponse clientResponse){
+		if(clientResponse.getHeaders() != null && clientResponse.getHeaders().get("ETag") != null){
+			String eTag = clientResponse.getHeaders().get("ETag").toString();
+			if(eTag != null) {
+				StringBuilder eTagBuffer = new StringBuilder(eTag);
+				eTagBuffer = eTagBuffer.deleteCharAt(0);
+				eTagBuffer.deleteCharAt(eTagBuffer.length()-1);
+				req.getSession().setAttribute("lastETag", eTagBuffer.toString());
+			}
+		}
+	}
+
+	public WebResource.Builder setCookiesToRequest(WebResource.Builder builder, HttpServletRequest request){
+		builder = builder.header("If-Match", getLastETag(request));
+
+		List<NewCookie> cartCookies = (List<NewCookie>) request.getSession().getAttribute("cartCookies");
+		if(cartCookies != null){
+			for (Iterator iterator = cartCookies.iterator(); iterator.hasNext();) {
+				builder = builder.cookie((NewCookie) iterator.next());
+			}
+		}
+
+		List<NewCookie> cookies = (List<NewCookie>) request.getSession().getAttribute("cookies");
+		if(cookies != null){
+			for (Iterator iterator = cookies.iterator(); iterator.hasNext();) {
+				builder = builder.cookie((NewCookie) iterator.next());
+			}
+		}
+		return builder;
 	}
 }
 

@@ -19,31 +19,21 @@ import com.sun.jersey.api.client.WebResource;
  */
 public class ProductDetailViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;	
-	public static final String DW_HOST="http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/products/tomtom-xl-s?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&pretty_print=true";
-	public static final String QUERY = "q=";   
+	public static final String DW_HOST="http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/products/";
+	public static final String CLIENT_ID = "client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&pretty_print=true";   
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ProductDetailViewServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
-		String dwUrl = DW_HOST + "&" + QUERY + request.getParameter("q") ;
-		out.println("dwurl:----------------"+ dwUrl);
+		//tomtom-xl-s
+		String dwUrl = DW_HOST + request.getParameter("product_id") + "?" + CLIENT_ID ;
 		String dwResponse = "";
 		
 		if(dwUrl != null || !dwUrl.equals("null")){
@@ -52,10 +42,10 @@ public class ProductDetailViewServlet extends HttpServlet {
 			WebResource webResource = client.resource(dwUrl);
 			dwResponse = webResource.get(String.class);
 		}
-		
+		PrintWriter out = response.getWriter();
 		out.println(dwResponse);
 	}
-	
+
 	public static StringBuilder streamToBuffer(InputStream inputStream){
 		BufferedReader reader;
 		StringBuilder buffer = new StringBuilder();

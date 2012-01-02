@@ -8,10 +8,17 @@
 
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="lib/superfish-1.4.8/js/superfish.js"></script>
-<script type="text/javascript" src="lib/superfish-1.4.8/js/hoverIntent.js"></script>
 
-<script type="text/javascript" src="lib/jquery-jtemplates.js"></script>
+<script src="lib/jquery/js/jquery-validate/jquery.validate.js"></script>
+<script src="lib/jquery/js/jcarousel/jquery.jcarousel.js"></script>
+<script src="lib/jquery/js/bgiframe_2.1.2/jquery.bgiframe.js"></script>
+<script src="lib/jquery/js/jquery-tooltip/jquery.tooltip.js"></script>
+
+
+<script type="text/javascript" src="lib/jquery/js/superfish-1.4.8/js/superfish.js"></script>
+<script type="text/javascript" src="lib/jquery/js/superfish-1.4.8/js/hoverIntent.js"></script>
+<script type="text/javascript" src="lib/js/dw/app.js"></script>
+<script type="text/javascript" src="http://jtemplates.tpython.com/jTemplates/jquery-jtemplates_uncompressed.js"></script>
 </head>
 <body  id="ext-gen6" class=" ext-gecko ext-gecko2">
 

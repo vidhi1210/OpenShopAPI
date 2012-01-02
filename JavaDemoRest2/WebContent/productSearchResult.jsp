@@ -44,13 +44,14 @@ $(document).ready(function(){
 		jQuery.ajax({
 			type : "POST",
 			url : "addToCart",
-			data: {"product_id":"882763039226","quantity":1.00},
+			data: {"product_id":"882763039226","quantity":$('#quantity').value},
 			success : function(data){
 				
 				alert('Add to Cart Successful');
 			}
 		});
-	}	
+	}
+	
 	function viewCart() {
 		
 		jQuery.ajax({
@@ -63,58 +64,24 @@ $(document).ready(function(){
 		});
 	}	
 	
+	function productDetailView() {
+		jQuery.ajax({
+			type : "POST",
+			url : "ProductDetail",
+			data: {"product_id":"882763039226","quantity":12.00},
+			success : function(data){
+				
+				alert('Product Detail View');
+			}
+		});
+	}	
 </script>
 
 <div id="container" class="pt_productsearchresult">
 <div id="main">
-		<div id="leftcolumn">
-			<div id="subnav" class="searchrefine">
-				<h1 class="searchheader">Search Results</h1>
-				<div class="searchrefinemessage">Refine Your Results By:</div>
-				<div id="searchrefinements" class="searchrefinements">
-					<script type="text/html" id="searchRefinmentTemplate">
-					{#foreach $T.refinements as refinement}
-					{#if $T.refinement.label == 'Category'}					
-					<div id="refinement-category" class="searchcategories refinement">
-						<div class="searchcategory">
-							<span>{$T.refinement.label}</span>
-						</div>
-						<ul id="category-level-1" class="refinementcategory">
-						{#foreach $T.refinement.values as val}
-								<li class="expandable"><a class="refineLink " title="{$T.val.value}">{$T.val.value}</a></li>
-						{#/for}
-						</ul>
-					{#/if}
-					</div>
-										
-					{#if $T.refinement.label == 'Price'}
-					<div id="refinement-price" class="navgroup refinement">
-						<h2>{$T.refinement.label}</h2>
-						<div class="refinedclear"></div>
-						<div class="refineattributes">
-							<div class="pricerefinement">
-								<ul>
-									{#foreach $T.refinement.values as val}
-									<li>
-										<a class="refineLink" href="">{$T.val.label}</a>
-									</li>
-									{#/for}
-							</div>
-						</div>
-					</div>
-					{#/if}
- 					{#/for}
-					</script>
-				</div>
-			</div>
-		</div>
+		<jsp:include page="searchRefinements.jsp" />
 		<div id="content">
-				<div class="breadcrumb">
-					<a class="home" title="Home"
-						href="http://dev09.usc.ecommera.demandware.net">Home</a> <span
-						class="divider">&gt;</span> <span class="resultstext">Your
-						Search results for:tomtom</span>
-				</div>
+				<jsp:include page="breadCrumb.jsp" />
 				<div class="producthits">
 					<div id="search" class="search">
 						<div class="productresultarea">
@@ -125,7 +92,7 @@ $(document).ready(function(){
 									<div class="image">
 										<div class="thumbnail">
 											<p class="productimage">
-												<a title="{$T.hit.image.title}" href="">
+												<a title="{$T.hit.image.title}" href="productDetailView.jsp?product_id={$T.hit.id}">
 													<img class="" width="113" height="113" title="{$T.hit.image.title}" alt="{$T.hit.image.alt}" src="{$T.hit.image.link}"/>
 												</a>
 											</p>
@@ -158,6 +125,5 @@ $(document).ready(function(){
 <!-- end of main -->
 <jsp:include page="footer.jsp" />
 
-</div>
 <!-- end of container div -->
 <jsp:include page="mainFooter.jsp" />

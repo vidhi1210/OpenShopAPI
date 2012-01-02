@@ -2,15 +2,13 @@ package com.ecm.demo.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.NewCookie;
 
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 /**
@@ -38,16 +36,12 @@ public class ViewMiniCartServlet extends HttpsServlet {
 		try {
 			webResource = getClient().resource(DW_URL); 
 			WebResource.Builder builder = webResource.getRequestBuilder();
-			List<NewCookie> cartCookies = (List<NewCookie>) request.getSession().getAttribute("cartCookies");
-			if(cartCookies != null){
-				for (Iterator iterator = cartCookies.iterator(); iterator.hasNext();) {
-					 builder = builder.cookie((NewCookie) iterator.next());
-				}
-			}
+			builder = setCookiesToRequest(builder, request);
 
-			String s = builder.get(String.class);
+			ClientResponse clientResponse = builder.get(ClientResponse.class);
+			setLastETag(request, clientResponse);
 		    PrintWriter out = response.getWriter();
-			out.println(s);
+			out.println(clientResponse.getEntity(String.class));
 		}
 		catch (Exception e) {
 			e.printStackTrace();

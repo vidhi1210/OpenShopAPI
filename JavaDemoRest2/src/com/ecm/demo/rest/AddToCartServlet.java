@@ -37,7 +37,7 @@ public class AddToCartServlet extends HttpsServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		addToCart(request, response);
 	}
 
@@ -45,35 +45,22 @@ public class AddToCartServlet extends HttpsServlet {
 		String addToCartString = DW_HOST ;
 
 		try {
-			double quantity = 1.00;
+			double quantity = Integer.parseInt(request.getParameter("quantity").toString());
 			webResource = getClient().resource(addToCartString); 
 			
 			//Add cart cookies
 			WebResource.Builder builder = webResource.getRequestBuilder();
-			List<NewCookie> cartCookies = (List<NewCookie>) request.getSession().getAttribute("cartCookies");
-			if(cartCookies != null){
-				for (Iterator iterator = cartCookies.iterator(); iterator.hasNext();) {
-					 builder = builder.cookie((NewCookie) iterator.next());
-				}
-			}
+			builder = setCookiesToRequest(builder, request);
 
-			ClientResponse res = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, getProduct("882763039226", quantity));
-			String cartJSON = res.getEntity(String.class);
+			ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, getProduct("882763039226", quantity));
+			String cartJSON = clientResponse.getEntity(String.class);
 
-			String eTag = res.getHeaders().get("ETag").toString();
-			StringBuilder eTagBuffer = new StringBuilder(eTag);
-			eTagBuffer = eTagBuffer.deleteCharAt(0);
-			eTagBuffer.deleteCharAt(eTagBuffer.length()-1);
-
-			request.getSession(true).setAttribute("ETag", eTagBuffer.toString());
-			
-			
-			if( res.getCookies() != null &&  res.getCookies().size() > 0){
-				request.getSession().setAttribute("cartCookies",  res.getCookies());
+			setLastETag(request, clientResponse);
+			if( clientResponse.getCookies() != null &&  clientResponse.getCookies().size() > 0){
+				request.getSession().setAttribute("cartCookies",  clientResponse.getCookies());
 			}
 
 			request.getRequestDispatcher("/productSearchResult.jsp").forward(request, response);
-
 		}
 		catch (Exception e) {
 			e.printStackTrace();
