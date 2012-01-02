@@ -22,10 +22,10 @@ function addToCart() {
 	jQuery.ajax({
 		type : "POST",
 		url : "addToCart",
+		dataType : "json",
 		data: {"product_id":"882763039226","quantity": +  $('#quantity').val()},
-		success : function(data){
-			
-			alert('Add to Cart Successful');
+		success : function(res){
+			updateMiniCart(res);
 		}
 	});
 }	

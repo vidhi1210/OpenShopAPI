@@ -22,8 +22,9 @@ public class ProductSearchServlet extends HttpsServlet {
 
 
 	private static final long serialVersionUID = 1L;
-	public static final String DW_HOST="http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/product_search?client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&start=0&count=10&pretty_print=true";
-	public static final String QUERY = "q=";
+	public static final String DW_HOST="http://demo.ocapi.demandware.net/s/Demos-SiteGenesis-Site/dw/shop/v1/product_search?";
+	
+	public static final String PARAMS = "&client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&start=0&count=10&pretty_print=true";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -40,13 +41,13 @@ public class ProductSearchServlet extends HttpsServlet {
 
 
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String dwUrl = DW_HOST + "&" + QUERY + request.getParameter("q") ;
+		String dwUrl = DW_HOST + request.getQueryString().toLowerCase() + "&" + PARAMS ;
 		String dwResponse = "";
 		
 		if(dwUrl != null || !dwUrl.equals("null")){

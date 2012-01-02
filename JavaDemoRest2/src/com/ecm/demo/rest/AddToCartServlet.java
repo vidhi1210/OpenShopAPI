@@ -1,6 +1,7 @@
 package com.ecm.demo.rest;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
@@ -53,14 +54,14 @@ public class AddToCartServlet extends HttpsServlet {
 			builder = setCookiesToRequest(builder, request);
 
 			ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, getProduct("882763039226", quantity));
-			String cartJSON = clientResponse.getEntity(String.class);
-
 			setLastETag(request, clientResponse);
 			if( clientResponse.getCookies() != null &&  clientResponse.getCookies().size() > 0){
 				request.getSession().setAttribute("cartCookies",  clientResponse.getCookies());
 			}
-
-			request.getRequestDispatcher("/productSearchResult.jsp").forward(request, response);
+			PrintWriter out = response.getWriter();
+			String dwResponse = clientResponse.getEntity(String.class);
+			out.println(dwResponse);
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + dwResponse);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

@@ -109,12 +109,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<div id="content">
-				<div class="breadcrumb">
-					<a class="home" title="Home"
-						href="http://dev09.usc.ecommera.demandware.net">Home</a> <span
-						class="divider">&gt;</span> <span class="resultstext">Your
-						Search results for:tomtom</span>
-				</div>
+				<jsp:include page="breadCrumb.jsp"></jsp:include>
 				<div class="producthits">
 					<div id="search" class="search">
 						<div class="productresultarea">

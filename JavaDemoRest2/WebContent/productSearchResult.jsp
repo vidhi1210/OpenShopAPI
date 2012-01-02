@@ -9,10 +9,20 @@ $(document).ready(function(){
 	$('#productListing').setTemplate($("#productListingTemplate").html() ) ;
 	$('#searchrefinements').setTemplate($("#searchRefinmentTemplate").html());
 	
-	var param = "<%=request.getParameter("q")%>";
+	<%
+		String searchQuery = (String) request.getParameter("q");
+		String url = "" ;
+		if(searchQuery != null && searchQuery.length() > 0){
+			url = "productSearch?q=" + request.getParameter("q");
+		} else {
+			url = "productSearch?refine=" +  request.getParameter("refine");
+		}
+	%>
+	var sUrl= '<%= url %>';
+	
 		$.ajax({
 			type : "GET",
-			url : "productSearch" + "?q=" + param,
+			url : sUrl,
 			dataType : "json",
 			success : function(data) {
 				$('#searchrefinements').processTemplate(data);
