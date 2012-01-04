@@ -56,7 +56,7 @@ public class CheckoutCartServlet extends HttpsServlet {
 		checkout(request,response);
 	}
 
-	public void checkout(HttpServletRequest request, HttpServletResponse response) {
+	public void checkout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		setCheckout(request, response);
 		setBillingAddress(request, response);
 		setShippingAddress(request, response);
@@ -91,13 +91,20 @@ public class CheckoutCartServlet extends HttpsServlet {
 		setLastETag(request, clientResponse);
 	}
 	
-	public void submitCheckout(HttpServletRequest request, HttpServletResponse response){
+	public void submitCheckout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		webResource = getClient().resource(URL_SUBMIT_CHECKOUT); 
 		WebResource.Builder builder = webResource.getRequestBuilder();
 		builder = setCookiesToRequest(builder, request);		
 		
 		ClientResponse clientResponse = builder.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, new PaymentCardBean(new Payment_CardDetailBean("Visa","holder","4111111111111111",8,2012,"123")));
 		setLastETag(request, clientResponse);
+		String orderConfirmation = clientResponse.getEntity(String.class);
+		
+		/*PrintWriter out = response.getWriter();
+		out.println(dwResponse);*/
+		
+		request.setAttribute("orderconfirmation", orderConfirmation);
+		request.getRequestDispatcher("/thankYou.jsp").forward(request, response);	
 	}
 	
 	
