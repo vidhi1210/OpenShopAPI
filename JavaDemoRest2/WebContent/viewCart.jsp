@@ -1,9 +1,9 @@
 <jsp:include page="header.jsp" />
 <script type="text/javascript">
-$(document).ready(function(){ 
-	$('#cartContainer').setTemplate($("#cartTemplate").html() ) ;
-	$('#ordertotals').setTemplate($("#cartOrderTemplate").html() ) ;
-	$.ajax({
+	$(document).ready(function() {
+		$('#cartContainer').setTemplate($("#cartTemplate").html());
+		$('#ordertotals').setTemplate($("#cartOrderTemplate").html());
+		$.ajax({
 			type : "GET",
 			url : "viewCart",
 			dataType : "json",
@@ -12,7 +12,7 @@ $(document).ready(function(){
 				$('#ordertotals').processTemplate(data);
 			}
 		});
-});
+	});
 </script>
 
 
@@ -62,17 +62,9 @@ $(document).ready(function(){
 								<span class="value">{$T.item.quantity}</span>
 							</td>
 							<td class="quantitycolumndetails">
-								<button name="dwfrm_cart_updateCart" value="Update Cart"
-									type="submit"
-									style="position: absolute; top: -100000px; display: none;">
-									<span>Update Cart</span>
-								</button>
-								<button name="dwfrm_cart_shipments_i0_items_i0_deleteProduct"
-									value="Remove" type="submit" class="textbutton">
-									<span>Remove</span>
-								</button> <br> <span class="imagebutton addtowishlist">Add to
-									Wishlist</span> <br> <span class="imagebutton addtoregistry">Add
-									to Gift Registry</span>
+								<span>Remove</span>
+								<br> <span class="imagebutton addtowishlist">Add to Wishlist</span> 
+								<br> <span class="imagebutton addtoregistry">Add to Gift Registry</span>
 								<div class="stockstate">
 									<ul>
 										<li class="isinstock">In Stock</li>
@@ -97,10 +89,7 @@ $(document).ready(function(){
 				<div class="cartfooter">
 					<div class="cartordertotals">
 						<div class="formactions">
-							<button name="dwfrm_cart_updateCart" value="Update Cart"
-								type="submit">
-								<span>Update Cart</span>
-							</button>
+							<span>Update Cart</span>
 						</div>
 
 						<div id="ordertotals" class="ordertotals">
@@ -143,29 +132,31 @@ $(document).ready(function(){
 				<!-- END: cartfooter -->
 			</fieldset>
 			<div class="actions">
-		
-		<form id="dwfrm_cart_d0rohhtleobd" method="post" action="checkoutCart" class="formcheckout">			
-			<fieldset>
-				<legend><span class="hide">Your Shopping Cart</span></legend>
-				
-				
-				<button name="dwfrm_cart_checkoutCart" value="Checkout" type="submit" class="imagebutton continuecheckout"><span>Checkout</span></button>
-				
-			</fieldset>
-		</form>
-		
-		
-		<form id="dwfrm_cart_d0pxkcbeyylc" method="post" action="http://dev09.usc.ecommera.demandware.net/on/demandware.store/Sites-shared-Site/default/Cart-Show/C934762305" class="formcontinueshopping"><!-- dwMarker="form" dwPipelineTitle="Cart-Show (app_sg)" dwPipelineURL="http://localhost:60606/target=/c/app_sg/p/Cart-Show" -->			
-			<fieldset>
-				<legend><span class="hide">Your Shopping Cart</span></legend>
-				
-				<button name="dwfrm_cart_continueShopping" value="Continue Shopping" type="submit" class="textbutton">&lt;&nbsp;<span>Continue Shopping</span></button>
-			</fieldset>
-		</form>
-		
-		
-		<div class="clear"><!-- FLAOT CLEAR --></div>
-	</div>
+
+				<form id="dwfrm_cart_d0rohhtleobd" method="post"
+					action="checkoutCart" class="formcheckout">
+					<fieldset>
+						<legend>
+							<span class="hide">Your Shopping Cart</span>
+						</legend>
+
+
+						<button name="dwfrm_cart_checkoutCart" value="Checkout"
+							type="submit" class="imagebutton continuecheckout">
+							<span>Checkout</span>
+						</button>
+
+					</fieldset>
+				</form>
+
+
+				<fieldset>
+					<a href="index.jsp"><span class="formcontinueshopping">Continue Shopping</span></a>
+				</fieldset>
+				<div class="clear">
+					<!-- FLAOT CLEAR -->
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -10,16 +10,9 @@ $(document).ready(function(){
 	$('#searchrefinements').setTemplate($("#searchRefinmentTemplate").html());
 	
 	<%
-		String searchQuery = (String) request.getParameter("q");
-		String url = "" ;
-		if(searchQuery != null && searchQuery.length() > 0){
-			url = "productSearch?q=" + request.getParameter("q");
-		} else {
-			url = "productSearch?refine=" +  request.getParameter("refine");
-		}
+		String url = "productSearch?" + request.getQueryString();
 	%>
 	var sUrl= '<%= url %>';
-	
 		$.ajax({
 			type : "GET",
 			url : sUrl,
@@ -27,64 +20,10 @@ $(document).ready(function(){
 			success : function(data) {
 				$('#searchrefinements').processTemplate(data);
 				$('#productListing').processTemplate(data);
-				
 			}
 		});
 });
 
-	function getCategory() {
-		jQuery.ajax({
-			type : "POST",
-			url : "productSearch",
-			dataType : "xml",
-			success : function(data) {
-				jQuery(data).find("product_search_result").each(
-						function() {
-							jQuery("#category").append(
-									jQuery(this).find(
-											"label:contains('Category')")
-											.parent()
-											.find('values value label').append(":"));
-						});
-			}
-		});
-	}
-	
-	function addToCart() {
-		jQuery.ajax({
-			type : "POST",
-			url : "addToCart",
-			data: {"product_id":"882763039226","quantity":$('#quantity').value},
-			success : function(data){
-				
-				alert('Add to Cart Successful');
-			}
-		});
-	}
-	
-	function viewCart() {
-		
-		jQuery.ajax({
-			type : "POST",
-			url : "viewCart",
-			dataType : "xml",
-			success : function(data){
-				alert('Checkout');
-			}
-		});
-	}	
-	
-	function productDetailView() {
-		jQuery.ajax({
-			type : "POST",
-			url : "ProductDetail",
-			data: {"product_id":"882763039226","quantity":12.00},
-			success : function(data){
-				
-				alert('Product Detail View');
-			}
-		});
-	}	
 </script>
 
 <div id="container" class="pt_productsearchresult">
@@ -102,7 +41,7 @@ $(document).ready(function(){
 									<div class="image">
 										<div class="thumbnail">
 											<p class="productimage">
-												<a title="{$T.hit.image.title}" href="productDetailView.jsp?product_id={$T.hit.id}">
+												<a title="{$T.hit.image.title}" href="productView.jsp?product_id={$T.hit.id}">
 													<img class="" width="113" height="113" title="{$T.hit.image.title}" alt="{$T.hit.image.alt}" src="{$T.hit.image.link}"/>
 												</a>
 											</p>
@@ -118,9 +57,6 @@ $(document).ready(function(){
 												<div class="salesprice"> {$T.hit.price} </div>
 											</div>
 										</div>
-									</div>
-									<div>
-										<a title="Add to cart" href="addToCart?product_id={$T.hit.id}">Add To Cart</a>
 									</div>
 								</div>
 								{#/for}

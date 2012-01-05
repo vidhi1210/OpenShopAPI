@@ -72,7 +72,7 @@
 			<!-- include search field here -->
 			<form action="productSearchResult.jsp" method="GET">
 				<input type="text" name="q" id="q" class="simplesearchinput" />
-				<button type="submit" value="Go" name="simplesearch">
+				<button type="submit" value="Go">
 					<span>Go</span>
 				</button>
 			</form>

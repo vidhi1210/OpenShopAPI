@@ -39,7 +39,7 @@
       </div>
   </div>
 <h1>Authentication Error..!</h1> <br>
-Please <a href="index.jsp">Login Again</a>
+Please <a href="login.jsp">Login Again</a>
 </div><!-- end of content -->
 </div><!-- end of main -->
 <jsp:include page="footer.jsp" />

@@ -1,6 +1,13 @@
 <script type="text/javascript">
 $(document).ready(function(){ 
-		updateMiniCart(null);
+	$.ajax({
+			type : "GET",
+			url : "viewCart",
+			dataType : "json",
+			success : function(data) {
+				updateMiniCart(data);
+			}
+		});
 });
 
 function updateMiniCart(data){

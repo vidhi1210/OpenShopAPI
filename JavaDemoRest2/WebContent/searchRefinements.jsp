@@ -12,7 +12,7 @@
 						</div>
 						<ul id="category-level-1" class="refinementcategory">
 						{#foreach $T.refinement.values as val}
-								<li class="expandable"><a class="refineLink " title="{$T.val.value}">{$T.val.value}</a></li>
+								<li class="expandable"><a class="refineLink " href="productSearchResult.jsp?refine_1=cgid={$T.val.value}&q=<%= request.getParameter("q")%>" title="{$T.val.value}">{$T.val.value}</a></li>
 						{#/for}
 						</ul>
 					{#/if}
@@ -27,7 +27,7 @@
 								<ul>
 									{#foreach $T.refinement.values as val}
 									<li>
-										<a class="refineLink" href="">{$T.val.label}</a>
+										<a class="refineLink" href="productSearchResult.jsp?refine_1=price={$T.val.value}&q=<%= request.getParameter("q") %>">{$T.val.label}</a>
 									</li>
 									{#/for}
 							</div>
