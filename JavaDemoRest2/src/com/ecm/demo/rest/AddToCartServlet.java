@@ -2,8 +2,6 @@ package com.ecm.demo.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.sun.jersey.api.client.ClientResponse;
@@ -61,7 +58,6 @@ public class AddToCartServlet extends HttpsServlet {
 			PrintWriter out = response.getWriter();
 			String dwResponse = clientResponse.getEntity(String.class);
 			out.println(dwResponse);
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + dwResponse);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

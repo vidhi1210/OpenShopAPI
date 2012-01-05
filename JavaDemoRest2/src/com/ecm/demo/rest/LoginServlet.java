@@ -32,7 +32,7 @@ public class LoginServlet extends HttpsServlet {
 
 		try {
 			webResource = getClient().resource(loginURL); 
-			ClientResponse res = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, getMyBean(request.getParameter("login").toString(), request.getParameter("password").toString()));
+			ClientResponse res = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, getLoginBean(request.getParameter("login").toString(), request.getParameter("password").toString()));
 			List<NewCookie> cookies = res.getCookies();
 			if(cookies.size() > 0){
 				request.getSession(true).setAttribute("cookies", cookies);
@@ -50,14 +50,14 @@ public class LoginServlet extends HttpsServlet {
 	}
 
 	@GET @Produces("application/json")
-	public LoginBean getMyBean(String login, String password) {
+	public LoginBean getLoginBean(String login, String password) {
 		//return new LoginBean("patricia@demandware.com", "demandware1");
 		return new LoginBean(login, password);
 	}
 }
 
 @XmlRootElement
-class LoginBean{
+class LoginBean {
 	public String login;
 	public String password;
 	public LoginBean(String login, String password) {
